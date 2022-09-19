@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import ReactPractice from './ReactPractice';
+import React, { useState } from 'react';
+import ReactAssignment from './ReactAssignment';
+
+const testProps = ['hello', 123, 'x gun give it to ya']
+const color = 'green'
+const startName = 'jacob'
+const obj = {
+  wunk: "yes",
+  prop2: "no"
+}
+
+// Context
+
+export const MyContext = React.createContext()
 
 function App() {
+
+  const contextDummyData = ['context', 'data', 'yeeet']
+  const [contextData, setContextData] = useState(contextDummyData)
+  
+  // const updateContext = (data) => {
+  //   setContextData(data)
+  // }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <MyContext.Provider value={{contextDummyData}} >
+        <ReactPractice stuff={testProps} color={color} startName={startName} obj={obj} />
+      </MyContext.Provider> */}
+      <ReactAssignment/>
     </div>
   );
 }
