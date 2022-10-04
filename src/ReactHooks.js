@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 
 function countInit() {
     console.log('count init')
@@ -27,7 +27,11 @@ export default function ReactHooks() {
     }, [])
 
     // useMemo
-    
+    const [num, setNum] = useState(1)
+    const doubleNumber = useMemo(() => {
+        return slowFunction(num)
+    }, [num])
+
 
     return (
         <div>
@@ -35,11 +39,17 @@ export default function ReactHooks() {
             <button onClick={decrementCount}>-</button>
             <span>{count}</span>
             <button onClick={incrementCount}>+</button>
-            
+
             {/* Effect */}
             <div>{windowWidth}</div>
 
             {/* Memo */}
+            <div>{doubleNumber}</div>
         </div>
     )
+}
+
+function slowFunction(num) {
+    for (let i = 0; i < 1000000000; i++) { }
+    return num * 2
 }
