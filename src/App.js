@@ -2,6 +2,7 @@ import './App.css';
 import ReactPractice from './ReactPractice';
 import React, { useState } from 'react';
 import ReactAssignment from './ReactAssignment';
+import ReactHooks from './ReactHooks';
 
 const testProps = ['hello', 123, 'x gun give it to ya']
 const color = 'green'
@@ -29,7 +30,8 @@ function App() {
       {/* <MyContext.Provider value={{contextDummyData}} >
         <ReactPractice stuff={testProps} color={color} startName={startName} obj={obj} />
       </MyContext.Provider> */}
-      <ReactAssignment/>
+      {/* <ReactAssignment/> */}
+      <ReactHooks />
     </div>
   );
 
