@@ -32,6 +32,7 @@ function App() {
       <ReactAssignment/>
     </div>
   );
+
 }
 
 export default App;
