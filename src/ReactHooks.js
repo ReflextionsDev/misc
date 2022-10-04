@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useMemo, useRef } from 'react'
 
 function countInit() {
     console.log('count init')
@@ -32,6 +32,30 @@ export default function ReactHooks() {
         return slowFunction(num)
     }, [num])
 
+    // useRef
+    // { current: 0 }
+    // Used to prevent infinite rerender
+    const renderCount = useRef(0)
+    useEffect(() => {
+        renderCount.current += 1
+    })
+
+    // Used to ref HTML elem
+    const [name, setName] = useState('')
+    const inputRef = useRef()
+
+    function focus() {
+        inputRef.current.focus()
+    }
+
+    // Used for previous value
+    const prevName = useRef('')
+
+    useEffect(() => {
+        prevName.current = name
+    }, [name])
+
+
 
     return (
         <div>
@@ -45,6 +69,13 @@ export default function ReactHooks() {
 
             {/* Memo */}
             <div>{doubleNumber}</div>
+
+            {/* useRef */}
+            <div>I rendered {renderCount.current}</div>
+            <input ref={inputRef} value={name} onChange={e => setName(e.target.value)}></input>
+            <div>Name: {name} Previous Name: {prevName.current}</div>
+            <button onClick={focus}>Focus</button>
+
         </div>
     )
 }
